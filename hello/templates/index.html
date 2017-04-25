@@ -21,19 +21,6 @@ var styles = {
 var objects = new Array(100);
 var count = 0;
 
-
-var vectorSource = new ol.source.Vector({
-    features: objects,
-    wrapX: false
-});
-
-var vector = new ol.layer.Vector({
-    source: vectorSource,
-    style: function(feature) {
-        return styles[feature.get('size')];
-    }
-});
-
 var map = new ol.Map({
     target: 'map',
     layers: [
@@ -52,12 +39,35 @@ var map = new ol.Map({
 
 var drawCircle = function(coordinate) {
     window.console.log(coordinate);
+
+    var view = map.getView();
+    var projection = view.getProjection();
+    var resolutionAtEquator = view.getResolution();
+    var center = view.getCenter();
+    var pointResolution = projection.getPointResolution(resolutionAtEquator, center);
+    resolutionFactor = resolutionAtEquator/pointResolution;
+    var radius = (radius/ol.proj.METERS_PER_UNIT.m)*resolutionFactor;
+
+    var circle = new ol.geom.Circle(center, radius);
+    var circleFeature = new ol.Feature(circle);
+
+    var vectorSource = new ol.source.Vector({
+        projection: 'EPSG:4326'
+    });
+    vectorSource.addFeature(circleFeature);
+    var VectorLayer = new ol.layer.Vector({
+        source: vectorSource
+    });
+
+    map.addLayer(VectorLayer);
+    /*
     objects[count] = new ol.Feature({
         'geometry': new ol.geom.Point(coordinate),
         'count': count,
         'size': 10
     });
     map.render();
+    */
 };
 
 map.on('click', function(evt) {
