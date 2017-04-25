@@ -17,6 +17,11 @@ var styles = {
     })
 };
 */
+
+var objects = new Array(100);
+var count = 0;
+
+
 var vectorSource = new ol.source.Vector({
     features: objects,
     wrapX: false
@@ -28,9 +33,6 @@ var vector = new ol.layer.Vector({
         return styles[feature.get('size')];
     }
 });
-
-var objects = new Array(100);
-var count = 0;
 
 var map = new ol.Map({
     target: 'map',
