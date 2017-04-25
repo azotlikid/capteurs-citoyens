@@ -44,7 +44,8 @@ var drawCircle = function(coordinate) {
     var projection = view.getProjection();
     var resolutionAtEquator = view.getResolution();
     var center = view.getCenter();
-    var pointResolution = projection.getPointResolution(resolutionAtEquator, center);
+    var pointResolution = ol.proj.getPointResolution(projection, resolutionAtEquator, coordinate);
+    /*projection.getPointResolution(resolutionAtEquator, center);*/
     resolutionFactor = resolutionAtEquator/pointResolution;
     var radius = (radius/ol.proj.METERS_PER_UNIT.m)*resolutionFactor;
 
