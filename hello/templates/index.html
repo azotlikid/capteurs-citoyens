@@ -45,10 +45,15 @@ var vector = new ol.layer.Vector({
 });
 */
 
-var objects = new Array[100];
+var objects = new Array(100);
+var coubnt = 0;
 
 var drawCircle = function(coordinate) {
-
+    obects[count] = new ol.Feature({
+        'geometry': new ol.geom.Point([x,y]),
+        'count': count,
+        'size': 10
+    });
 };
 
 var view = map.getView();
