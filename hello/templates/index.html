@@ -21,6 +21,47 @@ var styles = {
 var objects = new Array(100);
 var count = 0;
 
+var source = new ol.source.Vector({wrapX: false});
+
+var vector = new ol.layer.Vector({
+    source: source,
+    style: new ol.style.Style({
+        fill: new ol.style.Fill({
+            color: 'rgba(255, 255, 255, 0.2)'
+        }),
+        stroke: new ol.style.Stroke({
+            color: '#ffcc33',
+            width: 2
+        }),
+        image: new ol.style.Circle({
+            radius: 7,
+            fill: new ol.style.Fill({
+                color: '#ffcc33'
+            })
+        })
+    })
+});
+
+
+var vector = new ol.layer.Vector({
+      source: source,
+        style: new ol.style.Style({
+                fill: new ol.style.Fill({
+                          color: 'rgba(255, 255, 255, 0.2)'
+                              }),
+                                      stroke: new ol.style.Stroke({
+                                                color: '#ffcc33',
+                                                      width: 2
+                                                          }),
+                                                                  image: new ol.style.Circle({
+                                                                            radius: 7,
+                                                                                  fill: new ol.style.Fill({
+                                                                                              color: '#ffcc33'
+                                                                                                    })
+                                                                                                        })
+                                                                                                          })
+});
+
 var map = new ol.Map({
     target: 'map',
     layers: [
@@ -39,13 +80,18 @@ var map = new ol.Map({
 
 var drawCircle = function(coordinate) {
     window.console.log(coordinate);
+}
+
+/*
+var drawCircle = function(coordinate) {
+    window.console.log(coordinate);
 
     var view = map.getView();
     var projection = view.getProjection();
     var resolutionAtEquator = view.getResolution();
     var center = view.getCenter();
     var pointResolution = ol.proj.getPointResolution(projection, resolutionAtEquator, coordinate);
-    /*projection.getPointResolution(resolutionAtEquator, center);*/
+//    projection.getPointResolution(resolutionAtEquator, center);
     resolutionFactor = resolutionAtEquator/pointResolution;
     var radius = (radius/ol.proj.METERS_PER_UNIT.m)*resolutionFactor;
 
@@ -59,8 +105,8 @@ var drawCircle = function(coordinate) {
     var VectorLayer = new ol.layer.Vector({
         source: vectorSource
     });
-
-    map.addLayer(VectorLayer);
+*/
+  //  map.addLayer(VectorLayer);
     /*
     objects[count] = new ol.Feature({
         'geometry': new ol.geom.Point(coordinate),
