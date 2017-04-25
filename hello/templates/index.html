@@ -23,7 +23,7 @@ var map = new ol.Map({
 
 // click sur la carte = nouveau cercle
 // dessiner un cercle
-
+/*
 var styles = {
     '10': new ol.style.Style({
         radius:5,
@@ -32,12 +32,24 @@ var styles = {
     })
 };
 
+var vectorSource = new ol.source.Vector({
+    features: features,
+    wrapX: false
+});
+
+var vector = new ol.layer.Vector({
+    source: vectorSource,
+    style: function(feature) {
+        return styles[feature.get('size')];
+    }
+});
+*/
+
+var objects = new Array[100];
 
 var drawCircle = function(coordinate) {
 
 };
-
-window.console.log("**********************************");
 
 var view = map.getView();
 
