@@ -60,6 +60,18 @@ var map = new ol.Map({
     ]),
 });
 
+var draw;
+
+function addInteraction() {
+    var value = typeSelect.value;
+    if (value !== 'None') {
+        draw = new ol.interaction.Draw({
+            source: source,
+            type: /** @type {ol.geom.GeometryType} */ ('Point')
+        });
+        map.addInteraction(draw);
+    }
+}
 
 var drawCircle = function(coordinate) {
     window.console.log(coordinate);
