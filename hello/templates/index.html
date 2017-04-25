@@ -50,7 +50,7 @@ var count = 0;
 
 var drawCircle = function(coordinate) {
     objects[count] = new ol.Feature({
-        'geometry': new ol.geom.Point([x,y]),
+        'geometry': new ol.geom.Point(coordinate),
         'count': count,
         'size': 10
     });
