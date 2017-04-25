@@ -5,6 +5,33 @@
 
 <div id="map" class="map"></div>
 <script type="text/javascript">
+
+// click sur la carte = nouveau cercle
+// dessiner un cercle
+/*
+var styles = {
+    '10': new ol.style.Style({
+        radius:5,
+        fill: new ol.style.Fill({color: '#666666'}),
+        stroke: new ol.style.Stroke({color: '##bada55', width:1})
+    })
+};
+*/
+var vectorSource = new ol.source.Vector({
+    features: features,
+    wrapX: false
+});
+
+var vector = new ol.layer.Vector({
+    source: vectorSource,
+    style: function(feature) {
+        return styles[feature.get('size')];
+    }
+});
+
+var objects = new Array(100);
+var count = 0;
+
 var map = new ol.Map({
     target: 'map',
     layers: [
@@ -21,34 +48,8 @@ var map = new ol.Map({
     ]),
 });
 
-// click sur la carte = nouveau cercle
-// dessiner un cercle
-/*
-var styles = {
-    '10': new ol.style.Style({
-        radius:5,
-        fill: new ol.style.Fill({color: '#666666'}),
-        stroke: new ol.style.Stroke({color: '##bada55', width:1})
-    })
-};
-
-var vectorSource = new ol.source.Vector({
-    features: features,
-    wrapX: false
-});
-
-var vector = new ol.layer.Vector({
-    source: vectorSource,
-    style: function(feature) {
-        return styles[feature.get('size')];
-    }
-});
-*/
-
-var objects = new Array(100);
-var count = 0;
-
 var drawCircle = function(coordinate) {
+    window.console.log(coordinate);
     objects[count] = new ol.Feature({
         'geometry': new ol.geom.Point(coordinate),
         'count': count,
