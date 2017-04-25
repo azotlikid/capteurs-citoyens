@@ -21,8 +21,8 @@ var styles = {
 var objects = new Array(100);
 var count = 0;
 
-//var source = new ol.source.Vector({wrapX: false});
-/*
+var source = new ol.source.Vector({wrapX: false});
+
 var vector = new ol.layer.Vector({
     source: source,
     style: new ol.style.Style({
@@ -41,8 +41,8 @@ var vector = new ol.layer.Vector({
         })
     })
 });
-*/
-/*
+
+
 var map = new ol.Map({
     target: 'map',
     layers: [
@@ -58,12 +58,12 @@ var map = new ol.Map({
         new ol.control.ScaleLine()
     ]),
 });
-*/
-/*
+
+
 var drawCircle = function(coordinate) {
     window.console.log(coordinate);
 }
-*/
+
 /*
 var drawCircle = function(coordinate) {
     window.console.log(coordinate);
@@ -96,9 +96,8 @@ var drawCircle = function(coordinate) {
         'size': 10
     });
     map.render();
-    */
 };
-
+*/
 map.on('click', function(evt) {
     drawCircle(evt.coordinate);
 });
