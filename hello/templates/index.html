@@ -56,6 +56,10 @@ var drawCircle = function(coordinate) {
     });
 };
 
+map.on('click', function(evt) {
+    drawCircle(evt.coordinate);
+});
+
 var view = map.getView();
 
 var geolocation = new ol.Geolocation({
