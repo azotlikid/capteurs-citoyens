@@ -18,12 +18,12 @@ var styles = {
 };
 */
 
-var objects = new Array(100);
+//var objects = new Array(100);
 var count = 0;
 
 var source = new ol.source.Vector({wrapX: false});
 
-var vector = new ol.layer.Vector({
+var capteurs = new ol.layer.Vector({
     source: source,
     style: new ol.style.Style({
         fill: new ol.style.Fill({
@@ -49,7 +49,7 @@ var map = new ol.Map({
         new ol.layer.Tile({
             source: new ol.source.OSM()
         }),
-        vector
+        capteurs
     ],
     view: new ol.View({
         center: ol.proj.fromLonLat([-1.67, 48.11]),
